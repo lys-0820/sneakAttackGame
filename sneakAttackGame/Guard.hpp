@@ -23,19 +23,17 @@ public:
     float angle;
     sf::Texture guardTexture;
     sf::Sprite guardSprite;
-    //sf::RectangleShape shape;
     sf::FloatRect getBounds() const {
         return guardSprite.getGlobalBounds();
     }
     Guard(float x, float y, float size, float angle, float speed);
-    void draw(sf::RenderWindow& window); // 绘制玩家形状的方法
+    void draw(sf::RenderWindow& window);
     void chooseDirection();
     void rotate(float originAngle,float angle, float deltaTime);
     void autoMove(float deltaTime);
     void setTime(int time);
     void update(float deltaTime);
     void init(float x, float y, float size, float angle, float speed);
-    sf::CircleShape triArrow; // an arrow
 };
 
 #endif // GUARD_H

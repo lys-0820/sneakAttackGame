@@ -9,16 +9,14 @@ public:
     sf::Vector2f position;
     float speed;
     float size;
-    sf::RectangleShape shape; // 代表玩家的形状
-    sf::CircleShape triArrow; // an arrow
-
+    sf::RectangleShape shape;
+    sf::CircleShape triArrow;
     sf::FloatRect getBounds() const {
         return shape.getGlobalBounds();
     }
     Player(float x, float y, float size, float speed);
     void handleKeyPress(sf::Keyboard::Key key);
-    void draw(sf::RenderWindow& window); // 绘制玩家形状的方法
-    bool sneakAttack();
+    void draw(sf::RenderWindow& window); 
     void init(float x, float y, float size, float speed);
 
 private:

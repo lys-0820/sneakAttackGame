@@ -2,12 +2,12 @@
 #include "Player.hpp"
 Player::Player(float x, float y, float size, float speed)
     : position(x, y), speed(speed), size(size) {
-    shape.setSize(sf::Vector2f(size, size)); // 设置形状的大小
-    shape.setPosition(position); // 设置形状的初始位置
-    shape.setFillColor(sf::Color::Green); // 设置形状的填充颜色
+    shape.setSize(sf::Vector2f(size, size)); // set shape
+    shape.setPosition(position); // set origin position
+    shape.setFillColor(sf::Color::Green);
         shape.setOrigin(size/2,size/2);
     triArrow.setRadius(size/2);
-    triArrow.setPointCount(3);    // a triangle
+    triArrow.setPointCount(3);    // a triangle for indicate the direction
         triArrow.setOrigin(size/2,size/2);
     triArrow.setFillColor(sf::Color::Black);
 }
@@ -27,7 +27,7 @@ void Player::moveUp() {
         position.y -= speed;
         triArrow.setPosition(position.x,position.y - size);
         triArrow.setRotation(0);
-        triArrow.setFillColor(sf::Color::Blue);
+        triArrow.setFillColor(sf::Color::Red);
     }
         
 }
@@ -37,7 +37,7 @@ void Player::moveDown() {
         position.y += speed;
         triArrow.setPosition(position.x,position.y + size);
         triArrow.setRotation(180);
-        triArrow.setFillColor(sf::Color::Blue);
+        triArrow.setFillColor(sf::Color::Red);
     }
         
 }
@@ -47,7 +47,7 @@ void Player::moveLeft() {
         position.x -= speed;
         triArrow.setPosition(position.x - size,position.y);
         triArrow.setRotation(270);
-        triArrow.setFillColor(sf::Color::Blue);
+        triArrow.setFillColor(sf::Color::Red);
     }
         
 }
@@ -57,29 +57,26 @@ void Player::moveRight() {
         position.x += speed;
         triArrow.setPosition(position.x + size,position.y);
         triArrow.setRotation(90);
-        triArrow.setFillColor(sf::Color::Blue);
+        triArrow.setFillColor(sf::Color::Red);
     }
         
 }
 void Player::draw(sf::RenderWindow& window) {
-    shape.setPosition(position); // 更新形状的位置
-    //triArrow.setPosition(position);
+    shape.setPosition(position); // update the position of player cube
     window.draw(triArrow);
-    window.draw(shape); // 在窗口上绘制形状
+    window.draw(shape);
     
 }
-bool Player::sneakAttack() {
-    // sneak attack logic
-    return false;
-}
+
 void Player::init(float x, float y, float size, float speed){
-    shape.setSize(sf::Vector2f(size, size)); // 设置形状的大小
-    shape.setPosition(x,y); // 设置形状的初始位置
-    shape.setFillColor(sf::Color::Green); // 设置形状的填充颜色
+    //init the game when restart
+    shape.setSize(sf::Vector2f(size, size));
+    shape.setPosition(x,y);
+    shape.setFillColor(sf::Color::Green);
     shape.setOrigin(size/2,size/2);
     position.x = x;
     position.y = y;
-    triArrow.setFillColor(sf::Color::Black); // 设置形状的填充颜色
+    triArrow.setFillColor(sf::Color::Black);
     triArrow.setOrigin(size/2,size/2);
     triArrow.setRadius(size/2);
     triArrow.setPointCount(3);
